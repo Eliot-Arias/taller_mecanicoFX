@@ -6,14 +6,18 @@ import java.sql.SQLException;
 
 import Datos.D_conexion;
 import Modelo.M_Usuario;
+import application.Main;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class L_usuario {
 	
 	private static M_Usuario user = new M_Usuario();
 	
-	public static void ingresar(TextField usuario, PasswordField contraseña) {
+	public static void ingresar(TextField usuario, PasswordField contraseña){
 		
 		D_conexion cn = new D_conexion();
 		user.setNombre_usuario(usuario.getText());
@@ -30,9 +34,16 @@ public class L_usuario {
 			ResultSet resultado = stmt.executeQuery();
 			//System.out.println(resultado.getString("nombre_usuario"));
 			if (resultado.next()) {
-				System.out.println("Resultado: " + resultado.getString("contraseña"));				
+				System.out.println("Resultado: " + resultado.getString("contraseña"));
+				
+				
+				
 			}else {
 				System.out.println("Contraseña Erronea");
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error");
+				alert.setHeaderText("Usuario o Contraseña Incorrectas");
+				alert.showAndWait();
 			}
 			
 			stmt.close();
