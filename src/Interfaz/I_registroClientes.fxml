@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="404.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.I_registroClientesController">
+   <children>
+      <Pane layoutX="7.0" layoutY="7.0" prefHeight="382.0" prefWidth="420.0">
+         <children>
+            <Label alignment="CENTER" layoutX="88.0" layoutY="14.0" prefHeight="46.0" prefWidth="223.0" text="Registro de Clientes">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <GridPane layoutX="14.0" layoutY="76.0" prefHeight="223.0" prefWidth="372.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="182.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="190.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="lblNombreCliente" prefHeight="30.0" prefWidth="190.0" text="Nombre / Razon Social">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTipoDoc" layoutX="10.0" layoutY="20.0" prefHeight="30.0" prefWidth="190.0" text="Tipo de Documento" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblNroDoc" layoutX="10.0" layoutY="68.0" prefHeight="30.0" prefWidth="190.0" text="Nro de Documento" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblCorreo" layoutX="10.0" layoutY="116.0" prefHeight="30.0" prefWidth="190.0" text="Correo" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTelefono" layoutX="10.0" layoutY="164.0" prefHeight="30.0" prefWidth="190.0" text="Telefono" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtNombreCliente" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="txtNroDoc" layoutX="192.0" layoutY="18.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtCorreo" layoutX="192.0" layoutY="18.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtTelefono" layoutX="192.0" layoutY="18.0" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="cmbxTipoDoc" prefHeight="30.0" prefWidth="190.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane alignment="CENTER" hgap="15.0" layoutX="14.0" layoutY="310.0" prefHeight="46.0" prefWidth="372.0" vgap="15.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btnRegistrarCliente" mnemonicParsing="false" onAction="#btnRegistrarCliente" prefHeight="25.0" prefWidth="133.0" text="Registrar" />
+                  <Button fx:id="btnLimpiarFormulario" mnemonicParsing="false" onAction="#btnLimpiarFormulario" prefHeight="25.0" prefWidth="134.0" text="Limpiar" GridPane.columnIndex="1" />
+                  <Button fx:id="btnSalir" mnemonicParsing="false" onAction="#btnSalir" prefHeight="25.0" prefWidth="118.0" text="Salir" GridPane.columnIndex="2" />
+               </children>
+            </GridPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
