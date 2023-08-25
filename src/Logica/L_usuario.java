@@ -38,7 +38,7 @@ public class L_usuario {
 				System.out.println("Resultado: " + resultado.getString("contraseña"));
 				Main ma = new Main();
 				Stage stage = new Stage();
-				ma.load(stage, "inicio");
+				ma.load(stage, "inicio", "Inicio");
 				
 				
 				

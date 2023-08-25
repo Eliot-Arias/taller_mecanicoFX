@@ -30,10 +30,11 @@ public class Main extends Application {
 		
 	}
 	
-	public void load(Stage seconStage, String fxml) throws Exception{
+	public void load(Stage seconStage, String fxml, String tittle) throws Exception{
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../Interfaz/I_" + fxml +".fxml"));
 			Scene scene = new Scene(root);
+			seconStage.setTitle(tittle);
 			seconStage.setScene(scene);
 			seconStage.show();
 		} catch(Exception e) {
