@@ -18,7 +18,7 @@ public class Main extends Application {
 		
 		try {
 			//BorderPane root = new BorderPane();
-			Parent root = FXMLLoader.load(getClass().getResource("../Interfaz/I_inicio.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../Interfaz/I_login.fxml"));
 			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Inicio Sesion");
@@ -29,6 +29,19 @@ public class Main extends Application {
 		}	
 		
 	}
+	
+	public void load(Stage seconStage, String fxml) throws Exception{
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../Interfaz/I_" + fxml +".fxml"));
+			Scene scene = new Scene(root);
+			seconStage.setScene(scene);
+			seconStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	
 	
 	public static void main(String[] args) {
 		launch(args);

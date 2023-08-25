@@ -11,13 +11,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 
 public class L_usuario {
 	
 	private static M_Usuario user = new M_Usuario();
 	
-	public static void ingresar(TextField usuario, PasswordField contraseña){
+	public static void ingresar(TextField usuario, PasswordField contraseña) throws Exception{
 		
 		D_conexion cn = new D_conexion();
 		user.setNombre_usuario(usuario.getText());
@@ -35,6 +36,9 @@ public class L_usuario {
 			//System.out.println(resultado.getString("nombre_usuario"));
 			if (resultado.next()) {
 				System.out.println("Resultado: " + resultado.getString("contraseña"));
+				Main ma = new Main();
+				Stage stage = new Stage();
+				ma.load(stage, "inicio");
 				
 				
 				
