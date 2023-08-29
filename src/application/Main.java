@@ -1,8 +1,6 @@
 package application;
 	
-import java.io.IOException;
 
-import Interfaz.I_loginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -48,12 +46,3 @@ public class Main extends Application {
 		launch(args);
 	}
 }
-/*
-FXMLLoader loader = new FXMLLoader(loader.getClass().getResource("../Interfaz/I_inicio.fxml"));
-Parent root = loader.load();
-I_inicioController controlador = loader.getController();
-Scene scene = new Scene(root);
-Stage stage = new Stage();
-stage.setScene(scene);
-stage.show();
-*/
