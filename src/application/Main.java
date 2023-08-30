@@ -15,18 +15,19 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {	
 		
 		try {
-			//BorderPane root = new BorderPane();
-			Parent root = FXMLLoader.load(getClass().getResource("../Interfaz/I_login.fxml"));
-			Scene scene = new Scene(root);
-			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			Parent loginRoot = FXMLLoader.load(getClass().getResource("../Interfaz/I_login.fxml"));
+			Scene loginScene = new Scene(loginRoot);
+			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());			
 			primaryStage.setTitle("Inicio Sesion");
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			primaryStage.setScene(loginScene);
+			primaryStage.show();			
+			
 		} catch(Exception e) {
 			e.printStackTrace();
-		}	
-		
+		}		
 	}
+	
+	
 	
 	public void load(Stage seconStage, String fxml, String tittle) throws Exception{
 		try {
