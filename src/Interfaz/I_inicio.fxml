@@ -3,29 +3,62 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.I_inicioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1049.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.I_inicioController">
    <children>
-      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="907.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Registrar">
-            <items>
-              <MenuItem fx:id="registroCliente" mnemonicParsing="false" onAction="#btnRegistrarClientes" text="Clientes" />
-                  <MenuItem fx:id="registroAuto" mnemonicParsing="false" onAction="#btnRegistrarAuto" text="Automoviles" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+      <Pane prefHeight="651.0" prefWidth="1049.0">
+         <children>
+            <MenuBar layoutY="1.0" prefHeight="27.0" prefWidth="1049.0">
+               <menus>
+                  <Menu mnemonicParsing="false" text="Registrar">
+                     <items>
+                        <MenuItem fx:id="registroCliente" mnemonicParsing="false" onAction="#btnRegistrarClientes" text="Clientes" />
+                        <MenuItem fx:id="registroAuto" mnemonicParsing="false" onAction="#btnRegistrarAuto" text="Automoviles" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Edit">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <TabPane layoutY="78.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="567.0" prefWidth="1049.0" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="Autos">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="tableClientes" layoutX="308.0" prefHeight="516.0" prefWidth="742.0">
+                                 <columns>
+                                    <TableColumn fx:id="colNombreCliente" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="196.0" text="Nombre" />
+                                    <TableColumn fx:id="colTipoDoc" minWidth="50.0" prefWidth="68.0" text="Tipo Doc." />
+                                    <TableColumn fx:id="colNroDoc" minWidth="100.0" prefWidth="140.0" text="Nro. Documento" />
+                                    <TableColumn fx:id="colCorreo" prefWidth="182.0" text="Correo" />
+                                    <TableColumn fx:id="colTelefono" minWidth="0.0" prefWidth="152.0" text="Telefono" />
+                                 </columns>
+                              </TableView>
+                              <Separator layoutX="305.0" orientation="VERTICAL" prefHeight="517.0" prefWidth="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Clientes" />
+               </tabs>
+            </TabPane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
