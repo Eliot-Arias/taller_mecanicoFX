@@ -7,23 +7,28 @@ import java.sql.SQLException;
 import Datos.D_conexion;
 import Modelo.M_Usuario;
 import application.Main;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.scene.control.Alert.AlertType;
 
 public class L_usuario {
 	
 	private static M_Usuario user = new M_Usuario();
 	
-	public static void ingresar(TextField usuario, PasswordField contraseña) throws Exception{
-		
+	public static void cambiarPantalla(Stage stage) {
+		try {
+			Main ma = new Main();
+			ma.load(stage, "inicio", "Inicio");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	public static boolean ingresar(TextField usuario, PasswordField contraseña) throws Exception{
+		boolean autenticacion = false; 
 		D_conexion cn = new D_conexion();
 		user.setNombre_usuario(usuario.getText());
-		user.setContraseña(contraseña.getText());
-		
+		user.setContraseña(contraseña.getText());	
 		
 		//String consulta = "CALL validar_usuario(?, ?);";
 		String consulta = "SELECT * FROM usuarios WHERE nombre_usuario = ? AND contraseña = ?;";
@@ -32,22 +37,12 @@ public class L_usuario {
 			CallableStatement stmt = cn.conectar().prepareCall(consulta);
 			stmt.setString(1, user.getNombre_usuario());
 			stmt.setString(2, user.getContraseña());
-			ResultSet resultado = stmt.executeQuery();
-			//System.out.println(resultado.getString("nombre_usuario"));
+			ResultSet resultado = stmt.executeQuery();			
 			if (resultado.next()) {
-				System.out.println("Resultado: " + resultado.getString("contraseña"));
-				Main ma = new Main();
-				Stage stage = new Stage();
-				ma.load(stage, "inicio", "Inicio");
-				
-				
-				
-			}else {
-				System.out.println("Contraseña Erronea");
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Error");
-				alert.setHeaderText("Usuario o Contraseña Incorrectas");
-				alert.showAndWait();
+				System.out.println("Resultado: " + resultado.getString("contraseña"));				
+				autenticacion = true;
+			}else {				
+				autenticacion = false;
 			}
 			
 			stmt.close();
@@ -55,7 +50,7 @@ public class L_usuario {
 		} catch (SQLException e) {
 			System.out.println("Error: " + e.toString());
 		}
-		
+		return autenticacion;
 		
 	}
 	

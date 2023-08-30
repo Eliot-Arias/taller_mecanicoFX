@@ -1,6 +1,7 @@
 package Modelo;
 
 public class M_Clientes {
+	private int id_cliente;
 	private String nombre;
 	private String tipo_documento;
 	private String nro_documento;
@@ -11,13 +12,23 @@ public class M_Clientes {
 		
 	}
 
-	public M_Clientes(String nombre, String tipo_documento, String nro_documento, String correo, String telefono) {
+	public M_Clientes(int id_cliente, String nombre, String tipo_documento, String nro_documento, String correo,
+			String telefono) {
 		super();
+		this.id_cliente = id_cliente;
 		this.nombre = nombre;
 		this.tipo_documento = tipo_documento;
 		this.nro_documento = nro_documento;
 		this.correo = correo;
 		this.telefono = telefono;
+	}
+	
+	public int getId_cliente() {
+		return id_cliente;
+	}
+	
+	public void setId_cliente(int id_cliente) {
+		this.id_cliente = id_cliente;
 	}
 
 	public String getNombre() {

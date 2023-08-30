@@ -39,26 +39,61 @@ public class L_clientes {
 			stmt.setString(3, cliente.getNro_documento());
 			stmt.setString(4, cliente.getCorreo());
 			stmt.setString(5, cliente.getTelefono());
-			ResultSet resultado = stmt.executeQuery();
+			stmt.execute();
 			//System.out.println(resultado.getString("nombre_usuario"));
-			if (resultado.next()) {
-				System.out.println(resultado.toString());				
+			
+			
+			stmt.close();
+            			
+		} catch (SQLException e) {
+			if (e.getSQLState().equals("45000")) {
+				
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("AVISO");
+				alert.setContentText(e.getMessage());
+				alert.showAndWait();
+				
 			}else {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Error");
 				alert.setHeaderText("Error al registrar Cliente");
 				alert.showAndWait();
 			}
-			
-			stmt.close();
-            			
-		} catch (SQLException e) {
-			System.out.println("Error: " + e.toString());
 		}
 		
 		
 		
 	}
 	
+	
+	public static M_Clientes buscarCliente(String nroDocumento) {
+		D_conexion cn = new D_conexion();
+		String consulta = "CALL consultar_cliente(?)";
+		//String consulta = "SELECT * FROM clientes WHERE nro_documento = ?";
+		
+		try {
+			CallableStatement stmt = cn.conectar().prepareCall(consulta);
+			stmt.setString(1, nroDocumento);
+			ResultSet resultado = stmt.executeQuery();
+			if (resultado.next()) {
+				M_Clientes clienteEncontrado = new M_Clientes();
+				clienteEncontrado.setNombre(resultado.getString("nombre_o_razon_social"));
+				clienteEncontrado.setCorreo(resultado.getString("correo"));
+				clienteEncontrado.setTelefono(resultado.getString("telefono"));
+				clienteEncontrado.setNro_documento(resultado.getString("nro_documento"));
+				clienteEncontrado.setId_cliente(resultado.getInt("id_cliente"));
+				
+				return clienteEncontrado;
+			}
+			
+			stmt.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());	
+		}
+		
+		return null;	
+
+	}	
 	
 }
