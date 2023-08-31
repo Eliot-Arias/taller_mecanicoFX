@@ -10,15 +10,10 @@ public class M_automovil {
     private String color;
     private int id_garantia;
     private int id_historial;
+    private String cliente;
     
-    
-    public M_automovil() {
-    	
-    }
-
-
-	public M_automovil(int id_automovil, int id_cliente, String nro_placa, String marca, String modelo, String año,
-			String color, int id_garantia, int id_historial) {
+    public M_automovil(int id_automovil, int id_cliente, String nro_placa, String marca, String modelo, String año,
+			String color, int id_garantia, int id_historial, String cliente) {
 		super();
 		this.id_automovil = id_automovil;
 		this.id_cliente = id_cliente;
@@ -29,7 +24,22 @@ public class M_automovil {
 		this.color = color;
 		this.id_garantia = id_garantia;
 		this.id_historial = id_historial;
+		this.cliente = cliente;
 	}
+    
+
+	public M_automovil() {
+    	
+    }
+
+	public String getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
+	}
+
 
 
 	public int getId_automovil() {
