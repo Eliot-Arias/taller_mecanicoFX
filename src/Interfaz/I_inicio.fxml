@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -8,19 +10,23 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="651.0" prefWidth="1049.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.I_inicioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="662.0" prefWidth="1124.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.I_inicioController">
    <children>
-      <Pane prefHeight="651.0" prefWidth="1049.0">
+      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="651.0" prefWidth="1124.0">
          <children>
-            <MenuBar layoutY="1.0" prefHeight="27.0" prefWidth="1049.0">
+            <MenuBar layoutY="1.0" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="1124.0">
                <menus>
                   <Menu mnemonicParsing="false" text="Registrar">
                      <items>
-                        <MenuItem fx:id="registroCliente" mnemonicParsing="false" onAction="#btnRegistrarClientes" text="Clientes" />
-                        <MenuItem fx:id="registroAuto" mnemonicParsing="false" onAction="#btnRegistrarAuto" text="Automoviles" />
+                        <MenuItem fx:id="registroCliente" mnemonicParsing="false" onAction="#btnAbrirRegistroClientes" text="Clientes" />
+                        <MenuItem fx:id="registroAuto" mnemonicParsing="false" onAction="#btnAbrirRegistroClientes" text="Automoviles" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Edit">
@@ -35,27 +41,67 @@
                   </Menu>
                </menus>
             </MenuBar>
-            <TabPane layoutY="78.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="567.0" prefWidth="1049.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutY="78.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="573.0" prefWidth="1124.0" tabClosingPolicy="UNAVAILABLE">
                <tabs>
-                  <Tab text="Autos">
+                  <Tab text="Clientes">
                      <content>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <TableView fx:id="tableClientes" layoutX="308.0" prefHeight="516.0" prefWidth="742.0">
+                              <TableView fx:id="tableClientes" layoutX="308.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="516.0" prefWidth="815.0">
                                  <columns>
-                                    <TableColumn fx:id="colNombreCliente" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="196.0" text="Nombre" />
-                                    <TableColumn fx:id="colTipoDoc" minWidth="50.0" prefWidth="68.0" text="Tipo Doc." />
-                                    <TableColumn fx:id="colNroDoc" minWidth="100.0" prefWidth="140.0" text="Nro. Documento" />
-                                    <TableColumn fx:id="colCorreo" prefWidth="182.0" text="Correo" />
-                                    <TableColumn fx:id="colTelefono" minWidth="0.0" prefWidth="152.0" text="Telefono" />
+                                    <TableColumn fx:id="colIdCliente" maxWidth="150.0" minWidth="44.0" prefWidth="50.0" text="ID" />
+                                    <TableColumn fx:id="colNombreCliente" maxWidth="216.0" minWidth="98.0" prefWidth="209.0" text="Nombre" />
+                                    <TableColumn fx:id="colTipoDoc" maxWidth="210.0" minWidth="0.0" prefWidth="124.0" text="Tipo Doc." />
+                                    <TableColumn fx:id="colNroDoc" minWidth="81.0" prefWidth="143.0" text="Nro. Documento" />
+                                    <TableColumn fx:id="colCorreo" prefWidth="164.0" text="Correo" />
+                                    <TableColumn fx:id="colTelefono" maxWidth="352.0" minWidth="0.0" prefWidth="123.0" text="Telefono" />
                                  </columns>
                               </TableView>
-                              <Separator layoutX="305.0" orientation="VERTICAL" prefHeight="517.0" prefWidth="0.0" />
+                              <Separator layoutX="295.0" orientation="VERTICAL" prefHeight="517.0" prefWidth="0.0" />
+                              <GridPane layoutX="23.0" layoutY="14.0" prefHeight="316.0" prefWidth="261.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="64.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <TextField fx:id="txtNombreCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="217.0" promptText="Nombre Cliente" GridPane.rowIndex="1" />
+                                    <TextField fx:id="txtNroDoc" maxHeight="30.0" promptText="Nro de Documento" GridPane.rowIndex="3" />
+                                    <TextField fx:id="txtCorreo" maxHeight="30.0" promptText="Correo Electronico" GridPane.rowIndex="4" />
+                                    <TextField fx:id="txtTelefono" maxHeight="30.0" promptText="Telefono" GridPane.rowIndex="5" />
+                                    <ComboBox fx:id="cmbxTipoDoc" maxHeight="30.0" maxWidth="1.7976931348623157E308" prefWidth="150.0" promptText="Elija tipo Documento" GridPane.rowIndex="2" />
+                                    <TextField fx:id="txtIdCliente" editable="false" maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="ID cliente" />
+                                 </children>
+                              </GridPane>
+                              <GridPane hgap="15.0" layoutX="15.0" layoutY="331.0" prefHeight="173.0" prefWidth="274.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Button fx:id="btnRegistrarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnRegistrarCliente" prefHeight="35.0" prefWidth="209.0" text="Agregar" />
+                                    <Button fx:id="btnActualizarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnActualizarCliente" prefWidth="181.0" text="Editar" GridPane.columnIndex="1" />
+                                    <Button fx:id="btnEliminarCLiente" maxHeight="30.0" maxWidth="1.7976931348623157E308" minHeight="17.0" mnemonicParsing="false" prefWidth="148.0" text="Eliminar" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnLimpiarFormulario" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLimpiarFormulario" prefHeight="30.0" prefWidth="156.0" text="Limpiar Formulario" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                    <Button fx:id="btnSeleccionarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSeleccionarCliente" text="Seleccionar Cliente" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
                            </children>
                         </AnchorPane>
                      </content>
                   </Tab>
-                  <Tab text="Clientes" />
+                  <Tab text="Autos" />
                </tabs>
             </TabPane>
          </children>
