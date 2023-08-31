@@ -3,8 +3,10 @@ package Interfaz;
 
 import java.util.ArrayList;
 
+import Logica.L_auto;
 import Logica.L_clientes;
 import Modelo.M_Clientes;
+import Modelo.M_automovil;
 import application.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,7 +25,7 @@ public class I_inicioController {
 	private Stage stage = new Stage();
 	private Main mn = new Main();
 	
-
+	//Tabla Clientes
     @FXML
     private TableColumn<M_Clientes, String> colCorreo;
 
@@ -41,6 +43,65 @@ public class I_inicioController {
     @FXML
     private TableColumn<M_Clientes, String> colIdCliente;
 	
+    //Tabla Autos
+    @FXML
+    private TableColumn<M_automovil, String> colAño;//
+
+    @FXML
+    private TableColumn<M_automovil, String> colCLiente;
+
+    @FXML
+    private TableColumn<M_automovil, String> colColor;//
+    
+    @FXML
+    private TableColumn<M_automovil, String> colModelo;//
+
+    @FXML
+    private TableColumn<M_automovil, String> colIdAuto;//
+    
+    @FXML
+    private TableColumn<M_automovil, String> colPlaca;
+    
+    @FXML
+    private TableColumn<M_automovil, String> colMarcaAuto;//
+    
+    //Campos de Auto
+    @FXML
+	private TextField txtBuscarNumero;
+    @FXML
+    private TextField txtAño;
+
+    @FXML
+    private TextField txtColor;
+
+    @FXML
+    private TextField txtGarantia;
+
+    @FXML
+    private TextField txtHistorial;
+
+    @FXML
+    private TextField txtMarca;
+
+    @FXML
+    private TextField txtModelo;    
+
+    @FXML
+    private TextField txtNroPlaca;
+   
+    @FXML
+    private TextField txtIdAuto;
+    
+    @FXML
+    private TextField txtNombreClienteEncontrado;
+    
+    @FXML
+    private TextField txtTelefonoClienteEncontrado;
+    
+    
+    
+    //Campos de Cliente
+    
     @FXML
     private TextField txtIdCliente;
     @FXML
@@ -66,6 +127,10 @@ public class I_inicioController {
     @FXML
     private TableView<M_Clientes> tableClientes;
     
+    // tabla para llenar Autos
+    @FXML
+    private TableView<M_automovil> tableAutos;
+    
     //botones del formulario de clientes
     @FXML
 	private Button btnRegistrarCliente;
@@ -77,12 +142,25 @@ public class I_inicioController {
 	private Button btnEliminarCLiente;
 	@FXML 
 	private Button btnSeleccionarCliente;
+	
+	  //botones del formulario de autos
+    @FXML
+	private Button btnRegistrarAuto;
+	@FXML
+	private Button btnActualizarAuto;
+	@FXML 
+	private Button btnEliminarAuto;
+	@FXML 
+	private Button btnSeleccionarAuto;
+	@FXML
+    private Button btnBuscarCliente;
     
 	
 	//Lista de clientes
     private ObservableList<M_Clientes> clientesList = FXCollections.observableArrayList();
     
-    
+    //Lista de Autos
+    private ObservableList<M_automovil> autosList = FXCollections.observableArrayList();
     
     //Botones del Formulario Cliente
     
@@ -123,6 +201,28 @@ public class I_inicioController {
 		llenarTablaClientes();
 		System.out.println("Anny");
 	}
+	
+	
+	//Botones del Formulario Auto
+	
+	@FXML
+	void btnSeleccionarAuto(ActionEvent event) {
+		M_automovil auto = new M_automovil();
+		auto = tableAutos.getSelectionModel().getSelectedItem();
+		if(auto != null) {
+			txtIdAuto.setText(String.valueOf(auto.getId_automovil()));
+			txtIdCliente.setText(String.valueOf(auto.getId_cliente()));
+		}		
+	}
+	
+	@FXML
+	void btnActualizarAuto(ActionEvent event) {
+		L_clientes.actualizarCliente(txtIdCliente, txtNombreCliente, cmbxTipoDoc, txtNroDoc, txtCorreo, txtTelefono);
+		llenarTablaClientes();
+		System.out.println("Anny");
+	}
+	
+	
     
 	
 	//Botones del menu 
@@ -141,6 +241,7 @@ public class I_inicioController {
     @FXML
     public void initialize() {
     	llenarTablaClientes();
+    	llenarTablaAutos();
     	cargarComboBox();
     }        
     
@@ -150,7 +251,7 @@ public class I_inicioController {
 		cmbxTipoDoc.setItems(tipoDoc);
     }
     
-    //Funcion para llenar la tabla 
+    //Funcion para llenar la tabla de clientes
     public void llenarTablaClientes() {
     	
     	colIdCliente.setCellValueFactory(new PropertyValueFactory<>("id_cliente"));
@@ -163,6 +264,21 @@ public class I_inicioController {
     	clientesList = L_clientes.listClientes();    	
     	tableClientes.setItems(clientesList);    	
     	
+    }
+    
+    
+    //Funcion para llenar la tabla de autos
+    public void llenarTablaAutos() {
+    	colIdAuto.setCellValueFactory(new PropertyValueFactory<>("id_automovil"));
+    	colMarcaAuto.setCellValueFactory(new PropertyValueFactory<>("marca"));
+    	colAño.setCellValueFactory(new PropertyValueFactory<>("año"));
+    	colColor.setCellValueFactory(new PropertyValueFactory<>("color"));
+    	colModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+    	colPlaca.setCellValueFactory(new PropertyValueFactory<>("nro_placa"));
+    	colCLiente.setCellValueFactory(new PropertyValueFactory<>("cliente"));
+    	
+    	autosList = L_auto.listAuto();    	
+    	tableAutos.setItems(autosList); 
     }
     
     
