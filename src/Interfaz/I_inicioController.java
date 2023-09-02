@@ -1,8 +1,5 @@
 package Interfaz;
 
-
-import java.util.ArrayList;
-
 import Logica.L_auto;
 import Logica.L_clientes;
 import Modelo.M_Clientes;
@@ -12,99 +9,99 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class I_inicioController {
 	private Stage stage = new Stage();
 	private Main mn = new Main();
-	
-	//Tabla Clientes
-    @FXML
-    private TableColumn<M_Clientes, String> colCorreo;
 
-    @FXML
-    private TableColumn<M_Clientes, String> colNombreCliente;
+	// Tabla Clientes
+	@FXML
+	private TableColumn<M_Clientes, String> colCorreo;
 
-    @FXML
-    private TableColumn<M_Clientes, String> colNroDoc;
+	@FXML
+	private TableColumn<M_Clientes, String> colNombreCliente;
 
-    @FXML
-    private TableColumn<M_Clientes, String> colTelefono;
+	@FXML
+	private TableColumn<M_Clientes, String> colNroDoc;
 
-    @FXML
-    private TableColumn<M_Clientes, String> colTipoDoc;
-    @FXML
-    private TableColumn<M_Clientes, String> colIdCliente;
-	
-    //Tabla Autos
-    @FXML
-    private TableColumn<M_automovil, String> colAño;//
+	@FXML
+	private TableColumn<M_Clientes, String> colTelefono;
 
-    @FXML
-    private TableColumn<M_automovil, String> colCLiente;
+	@FXML
+	private TableColumn<M_Clientes, String> colTipoDoc;
+	@FXML
+	private TableColumn<M_Clientes, String> colIdCliente;
 
-    @FXML
-    private TableColumn<M_automovil, String> colColor;//
-    
-    @FXML
-    private TableColumn<M_automovil, String> colModelo;//
+	// Tabla Autos
+	@FXML
+	private TableColumn<M_automovil, String> colAño;//
 
-    @FXML
-    private TableColumn<M_automovil, String> colIdAuto;//
-    
-    @FXML
-    private TableColumn<M_automovil, String> colPlaca;
-    
-    @FXML
-    private TableColumn<M_automovil, String> colMarcaAuto;//
-    
-    //Campos de Auto
-    @FXML
+	@FXML
+	private TableColumn<M_automovil, String> colCLiente;
+
+	@FXML
+	private TableColumn<M_automovil, String> colColor;//
+
+	@FXML
+	private TableColumn<M_automovil, String> colModelo;//
+
+	@FXML
+	private TableColumn<M_automovil, String> colIdAuto;//
+
+	@FXML
+	private TableColumn<M_automovil, String> colPlaca;
+
+	@FXML
+	private TableColumn<M_automovil, String> colMarcaAuto;//
+
+	// Campos de Auto
+	@FXML
 	private TextField txtBuscarNumero;
-    @FXML
-    private TextField txtAño;
+	@FXML
+	private TextField txtAño;
 
-    @FXML
-    private TextField txtColor;
+	@FXML
+	private TextField txtColor;
 
-    @FXML
-    private TextField txtGarantia;
+	@FXML
+	private TextField txtGarantia;
 
-    @FXML
-    private TextField txtHistorial;
+	@FXML
+	private TextField txtHistorial;
 
-    @FXML
-    private TextField txtMarca;
+	@FXML
+	private TextField txtMarca;
 
-    @FXML
-    private TextField txtModelo;    
+	@FXML
+	private TextField txtModelo;
 
-    @FXML
-    private TextField txtNroPlaca;
-   
-    @FXML
-    private TextField txtIdAuto;
-    
-    @FXML
-    private TextField txtNombreClienteEncontrado;
-    
-    @FXML
-    private TextField txtTelefonoClienteEncontrado;
-    
-    
-    
-    //Campos de Cliente
-    
-    @FXML
-    private TextField txtIdCliente;
-    @FXML
+	@FXML
+	private TextField txtNroPlaca;
+
+	@FXML
+	private TextField txtIdAuto;
+
+	@FXML
+	private TextField txtNombreClienteEncontrado;
+
+	@FXML
+	private TextField txtTelefonoClienteEncontrado;
+
+	// Campos de Cliente
+
+	@FXML
+	private TextField txtIdCliente;
+	@FXML
 	private TextField txtNombreCliente;
 	@FXML
 	private TextField txtNroDoc;
@@ -114,63 +111,64 @@ public class I_inicioController {
 	private TextField txtTelefono;
 	@FXML
 	private ComboBox<String> cmbxTipoDoc;
-	
-	//lista para el combo box
-	ObservableList<String> tipoDoc = FXCollections.observableArrayList("Documento Nacional de Identidad", "Carnet de Extrangería", "Pasaporte", "Documento de Identidad Extrangero", "Registro Unico de Contribuyente");
-	
-    @FXML
-    private MenuItem registroAuto;
-    @FXML
-    private MenuItem registroCliente;
-    
-    // tabla para llenar clientes
-    @FXML
-    private TableView<M_Clientes> tableClientes;
-    
-    // tabla para llenar Autos
-    @FXML
-    private TableView<M_automovil> tableAutos;
-    
-    //botones del formulario de clientes
-    @FXML
+
+	// lista para el combo box
+	ObservableList<String> tipoDoc = FXCollections.observableArrayList("DNI", "Carnet Extrangería", "Pasaporte", "DIE",
+			"RUC");
+
+	@FXML
+	private MenuItem registroAuto;
+	@FXML
+	private MenuItem registroCliente;
+
+	// tabla para llenar clientes
+	@FXML
+	private TableView<M_Clientes> tableClientes;
+
+	// tabla para llenar Autos
+	@FXML
+	private TableView<M_automovil> tableAutos;
+
+	// botones del formulario de clientes
+	@FXML
 	private Button btnRegistrarCliente;
 	@FXML
 	private Button btnLimpiarFormulario;
 	@FXML
 	private Button btnActualizarCliente;
-	@FXML 
+	@FXML
 	private Button btnEliminarCLiente;
-	@FXML 
+	@FXML
 	private Button btnSeleccionarCliente;
-	
-	  //botones del formulario de autos
-    @FXML
+
+	// botones del formulario de autos
+	@FXML
 	private Button btnRegistrarAuto;
 	@FXML
 	private Button btnActualizarAuto;
-	@FXML 
+	@FXML
 	private Button btnEliminarAuto;
-	@FXML 
+	@FXML
 	private Button btnSeleccionarAuto;
 	@FXML
-    private Button btnBuscarCliente;
-    
-	
-	//Lista de clientes
-    private ObservableList<M_Clientes> clientesList = FXCollections.observableArrayList();
-    
-    //Lista de Autos
-    private ObservableList<M_automovil> autosList = FXCollections.observableArrayList();
-    
-    //Botones del Formulario Cliente
-    
-    @FXML
+	private Button btnBuscarCliente;
+
+	// Lista de clientes
+	private ObservableList<M_Clientes> clientesList = FXCollections.observableArrayList();
+
+	// Lista de Autos
+	private ObservableList<M_automovil> autosList = FXCollections.observableArrayList();
+
+	// Botones del Formulario Cliente
+
+	@FXML
 	public void btnRegistrarCliente(ActionEvent event) {
 		// TODO Autogenerated
 		L_clientes.registrarCliente(txtNombreCliente, cmbxTipoDoc, txtNroDoc, txtCorreo, txtTelefono);
 		llenarTablaClientes();
-		
+
 	}
+
 	// Event Listener on Button[#btnLimpiarFormulario].onAction
 	@FXML
 	public void btnLimpiarFormulario(ActionEvent event) {
@@ -180,107 +178,136 @@ public class I_inicioController {
 		txtNroDoc.setText("");
 		txtTelefono.setText("");
 	}
-	
+
 	@FXML
 	void btnSeleccionarCliente(ActionEvent event) {
 		M_Clientes cliente = new M_Clientes();
 		cliente = tableClientes.getSelectionModel().getSelectedItem();
-		if(cliente != null) {
+		if (cliente != null) {
 			txtIdCliente.setText(String.valueOf(cliente.getId_cliente()));
 			txtNombreCliente.setText(cliente.getNombre());
 			cmbxTipoDoc.setValue(cliente.getTipo_documento());
 			txtNroDoc.setText(cliente.getNro_documento());
 			txtCorreo.setText(cliente.getCorreo());
 			txtTelefono.setText(cliente.getTelefono());
-		}		
+		}
 	}
-	
+
 	@FXML
 	void btnActualizarCliente(ActionEvent event) {
 		L_clientes.actualizarCliente(txtIdCliente, txtNombreCliente, cmbxTipoDoc, txtNroDoc, txtCorreo, txtTelefono);
 		llenarTablaClientes();
 		System.out.println("Anny");
 	}
-	
-	
-	//Botones del Formulario Auto
-	
+
+	// Botones del Formulario Auto
+
 	@FXML
 	void btnSeleccionarAuto(ActionEvent event) {
 		M_automovil auto = new M_automovil();
 		auto = tableAutos.getSelectionModel().getSelectedItem();
-		if(auto != null) {
+		if (auto != null) {
 			txtIdAuto.setText(String.valueOf(auto.getId_automovil()));
 			txtIdCliente.setText(String.valueOf(auto.getId_cliente()));
-		}		
+		}
 	}
-	
+
 	@FXML
 	void btnActualizarAuto(ActionEvent event) {
 		L_clientes.actualizarCliente(txtIdCliente, txtNombreCliente, cmbxTipoDoc, txtNroDoc, txtCorreo, txtTelefono);
 		llenarTablaClientes();
-		System.out.println("Anny");
+	}
+
+	// Botones del menu
+
+	@FXML
+	void btnAbrirRegistroAuto(ActionEvent event) throws Exception {
+		System.out.println("Auto");
+		mn.load(stage, "registroAuto", "Registro de Auto");
+	}
+
+	@FXML
+	void btnAbrirRegistroClientes(ActionEvent event) throws Exception {
+		System.out.println("Clientes");
+		mn.load(stage, "registroClientes", "Registro de Clientes");
 	}
 	
 	
-    
+	private M_Clientes clienteEncontrado;
 	
-	//Botones del menu 
-    
-    @FXML
-    void btnAbrirRegistroAuto(ActionEvent event) throws Exception {
-    	System.out.println("Auto");    	
-    	mn.load(stage, "registroAuto", "Registro de Auto");    
-    }
+	@FXML
+    void btnBuscarCliente(ActionEvent event){
+    	String nroDocumento = txtBuscarNumero.getText();
+    	clienteEncontrado = L_clientes.buscarCliente(nroDocumento);
+    	
+    	System.out.println("Anny Buscando Clientes");
+    	
+    	if (clienteEncontrado != null) {
+    		txtNombreClienteEncontrado.setText(clienteEncontrado.getNombre());
+    		txtTelefonoClienteEncontrado.setText(clienteEncontrado.getTelefono());
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Respuesta");
+    		alert.setHeaderText(null);
+    		alert.setContentText("Cliente encontrado");
 
-    @FXML
-    void btnAbrirRegistroClientes(ActionEvent event) throws Exception {
-    	mn.load(stage, "registroClientes", "Registro de Clientes");
+    		alert.showAndWait();
+		}else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setHeaderText("Error al encontrar Usuario");
+			alert.showAndWait();
+		}
+    	
     }
-    
-    @FXML
-    public void initialize() {
-    	llenarTablaClientes();
-    	llenarTablaAutos();
-    	cargarComboBox();
-    }        
-    
-    //Cargando el Combo Box
-    public void cargarComboBox() {
-    	cmbxTipoDoc.setValue(tipoDoc.get(0));
+	
+	
+
+	@FXML
+	public void initialize() {
+		llenarTablaClientes();
+		llenarTablaAutos();
+		cargarComboBox();
+	}
+
+	// Cargando el Combo Box
+	public void cargarComboBox() {
+		cmbxTipoDoc.setValue(tipoDoc.get(0));
 		cmbxTipoDoc.setItems(tipoDoc);
-    }
-    
-    //Funcion para llenar la tabla de clientes
-    public void llenarTablaClientes() {
-    	
-    	colIdCliente.setCellValueFactory(new PropertyValueFactory<>("id_cliente"));
-    	colNombreCliente.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-    	colTipoDoc.setCellValueFactory(new PropertyValueFactory<>("tipo_documento"));
-    	colNroDoc.setCellValueFactory(new PropertyValueFactory<>("nro_documento"));
-    	colCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
-    	colTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
-    	
-    	clientesList = L_clientes.listClientes();    	
-    	tableClientes.setItems(clientesList);    	
-    	
-    }
-    
-    
-    //Funcion para llenar la tabla de autos
-    public void llenarTablaAutos() {
-    	colIdAuto.setCellValueFactory(new PropertyValueFactory<>("id_automovil"));
-    	colMarcaAuto.setCellValueFactory(new PropertyValueFactory<>("marca"));
-    	colAño.setCellValueFactory(new PropertyValueFactory<>("año"));
-    	colColor.setCellValueFactory(new PropertyValueFactory<>("color"));
-    	colModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-    	colPlaca.setCellValueFactory(new PropertyValueFactory<>("nro_placa"));
-    	colCLiente.setCellValueFactory(new PropertyValueFactory<>("cliente"));
-    	
-    	autosList = L_auto.listAuto();    	
-    	tableAutos.setItems(autosList); 
-    }
-    
-    
-    
+	}
+
+	// Funcion para llenar la tabla de clientes
+	public void llenarTablaClientes() {
+
+		colIdCliente.setCellValueFactory(new PropertyValueFactory<>("id_cliente"));
+		colNombreCliente.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+		colTipoDoc.setCellValueFactory(new PropertyValueFactory<>("tipo_documento"));
+		colNroDoc.setCellValueFactory(new PropertyValueFactory<>("nro_documento"));
+		colCorreo.setCellValueFactory(new PropertyValueFactory<>("correo"));
+		colTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
+
+		clientesList = L_clientes.listClientes();
+		tableClientes.setItems(clientesList);
+
+	}
+
+	// Funcion para llenar la tabla de autos
+	//public void llenarTablaAutos() {
+	//	colIdAuto.setCellValueFactory(new PropertyValueFactory<>("id_automovil"));
+	//	colMarcaAuto.setCellValueFactory(new PropertyValueFactory<>("marca"));
+	//	colAño.setCellValueFactory(new PropertyValueFactory<>("año"));
+	//	colColor.setCellValueFactory(new PropertyValueFactory<>("color"));
+	//	colModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+	//	colPlaca.setCellValueFactory(new PropertyValueFactory<>("nro_placa"));
+	//	colCLiente.setCellValueFactory(new PropertyValueFactory<>("cliente"));
+
+	//	autosList = L_auto.listAuto();
+	//	tableAutos.setItems(autosList);
+	//}
+
+	public void llenarTablaAutos() {
+		L_auto.llenarTablaAutos(colIdAuto, colMarcaAuto, colAño, colColor, colModelo, colPlaca, colCLiente, tableAutos,
+				autosList);
+	}
+
 }

@@ -11,8 +11,11 @@ import Modelo.M_automovil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class L_auto {
 	private static M_automovil auto = new M_automovil();
@@ -102,6 +105,24 @@ public class L_auto {
 		
 		return autos;
 	}
+	
+	public static TableView<M_automovil> llenarTablaAutos(TableColumn<M_automovil, String> colIdAuto, TableColumn<M_automovil, String>colMarcaAuto
+			, TableColumn<M_automovil, String> colAño, TableColumn<M_automovil, String> colColor, TableColumn<M_automovil, String> colModelo
+			, TableColumn<M_automovil, String> colPlaca, TableColumn<M_automovil, String> colCLiente, TableView<M_automovil> tableAutos
+			, ObservableList<M_automovil> autosList) {
+    	colIdAuto.setCellValueFactory(new PropertyValueFactory<>("id_automovil"));
+    	colMarcaAuto.setCellValueFactory(new PropertyValueFactory<>("marca"));
+    	colAño.setCellValueFactory(new PropertyValueFactory<>("año"));
+    	colColor.setCellValueFactory(new PropertyValueFactory<>("color"));
+    	colModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+    	colPlaca.setCellValueFactory(new PropertyValueFactory<>("nro_placa"));
+    	colCLiente.setCellValueFactory(new PropertyValueFactory<>("cliente"));
+    	
+    	autosList = L_auto.listAuto();
+    	tableAutos.setItems(autosList);
+    	return tableAutos;
+    }
+	
 	
 	
 	

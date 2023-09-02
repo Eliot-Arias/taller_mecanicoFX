@@ -21,10 +21,10 @@ Connection conectar = null;
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conectar = DriverManager.getConnection(cadena, usuario, contrasenia);
 			//JOptionPane.showMessageDialog(null, "Conexion exitosa");
-			System.out.println("Conexion exitosa");
+			//System.out.println("Conexion exitosa");
 			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Error en la conexion" + e.toString());
+			JOptionPane.showMessageDialog(null, "Error en la conexion" + e.getMessage());
 			System.out.println(e.toString());
 		}
 		return conectar;

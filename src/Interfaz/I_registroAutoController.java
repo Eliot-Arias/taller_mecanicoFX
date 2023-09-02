@@ -10,8 +10,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
+import javafx.util.converter.IntegerStringConverter;
 
 public class I_registroAutoController {
 
@@ -87,6 +90,24 @@ public class I_registroAutoController {
     void btnCancelar(ActionEvent event) {
     	salir(event);
     }
+    
+    @FXML
+    void initialize() {
+    	StringConverter<Integer> converter = new IntegerStringConverter();
+
+        // filtro para permitir solo dígitos
+        TextFormatter<Integer> textFormatter = new TextFormatter<>(converter, null, change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d*")) {
+                return change;
+            } else {
+                return null;
+            }
+        });
+
+        txtNroDocCliente.setTextFormatter(textFormatter);
+    }
+    
 
     @FXML
     void btnGuardar(ActionEvent event) {
@@ -123,6 +144,7 @@ public class I_registroAutoController {
 		}else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Error");
+			alert.setHeaderText(null);
 			alert.setHeaderText("Error al encontrar Usuario");
 			alert.showAndWait();
 		}

@@ -3,8 +3,6 @@ package Logica;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import Datos.D_conexion;
 import Modelo.M_Clientes;
@@ -20,18 +18,36 @@ public class L_clientes {
 	
 	
 	public static void registrarCliente(TextField nombre, ComboBox<String> tipo_documento, TextField nro_documento, TextField correo, TextField telefono) {
-		cliente.setNombre(nombre.getText());
-		cliente.setTipo_documento((String) tipo_documento.getValue());
-		cliente.setNro_documento(nro_documento.getText());
-		cliente.setCorreo(correo.getText());
-		cliente.setTelefono(telefono.getText());
+		
+	    String nombreText = nombre.getText();
+	    String tipoDocumentoValue = (String) tipo_documento.getValue();
+	    String nroDocumentoText = nro_documento.getText();
+	    String correoText = correo.getText();
+	    String telefonoText = telefono.getText();
 		
 		
-		System.out.println(cliente.getNombre());
-		System.out.println(cliente.getTipo_documento());
-		System.out.println(cliente.getNro_documento());
-		System.out.println(cliente.getCorreo());
-		System.out.println(cliente.getTelefono());
+	    if (nombreText.isEmpty() || tipoDocumentoValue == null || tipoDocumentoValue.isEmpty() || nroDocumentoText.isEmpty() || correoText.isEmpty() || telefonoText.isEmpty()) {
+	        Alert alert = new Alert(AlertType.ERROR);
+	        alert.setTitle("Error");
+	        alert.setHeaderText("Error al actualizar Cliente");
+	        alert.setContentText("Por favor, complete todos los campos antes de actualizar.");
+	        alert.showAndWait();
+	        return; 
+	    }	
+		
+	    
+	    
+		
+		cliente.setNombre(nombreText);
+		cliente.setTipo_documento((String) tipoDocumentoValue);
+		cliente.setNro_documento(nroDocumentoText);
+		cliente.setCorreo(correoText);
+		cliente.setTelefono(telefonoText);
+		
+		
+		
+		
+		
 		
 		D_conexion cn = new D_conexion();
 		
@@ -70,22 +86,34 @@ public class L_clientes {
 	}
 	
 	public static void actualizarCliente(TextField  id_cliente,TextField nombre, ComboBox<String> tipo_documento, TextField nro_documento, TextField correo, TextField telefono) {
-		cliente.setId_cliente(Integer.parseInt(id_cliente.getText()));
-		cliente.setNombre(nombre.getText());
-		cliente.setTipo_documento((String) tipo_documento.getValue());
-		cliente.setNro_documento(nro_documento.getText());
-		cliente.setCorreo(correo.getText());
-		cliente.setTelefono(telefono.getText());		
 		
-		System.out.println(cliente.getId_cliente());
-		System.out.println(cliente.getNombre());
-		System.out.println(cliente.getTipo_documento());
-		System.out.println(cliente.getNro_documento());
-		System.out.println(cliente.getCorreo());
-		System.out.println(cliente.getTelefono());
+		String idClienteText = id_cliente.getText();
+	    String nombreText = nombre.getText();
+	    String tipoDocumentoValue = (String) tipo_documento.getValue();
+	    String nroDocumentoText = nro_documento.getText();
+	    String correoText = correo.getText();
+	    String telefonoText = telefono.getText();
 		
-		D_conexion cn = new D_conexion();
+	    if (idClienteText.isEmpty() || nombreText.isEmpty() || tipoDocumentoValue == null || tipoDocumentoValue.isEmpty() || nroDocumentoText.isEmpty() || correoText.isEmpty() || telefonoText.isEmpty()) {
+	        Alert alert = new Alert(AlertType.ERROR);
+	        alert.setTitle("Error");
+	        alert.setHeaderText("Error al actualizar Cliente");
+	        alert.setContentText("Por favor, complete todos los campos antes de actualizar.");
+	        alert.showAndWait();
+	        return; 
+	    }		
 		
+		
+		cliente.setId_cliente(Integer.parseInt(idClienteText));
+		cliente.setNombre(nombreText);
+		cliente.setTipo_documento((String) tipoDocumentoValue);
+		cliente.setNro_documento(nroDocumentoText);
+		cliente.setCorreo(correoText);
+		cliente.setTelefono(telefonoText);
+		
+		
+		
+		D_conexion cn = new D_conexion();		
 		String consulta = "CALL editar_cliente(?, ?, ?, ?, ?, ?);";
 		
 		try {
@@ -169,20 +197,13 @@ public class L_clientes {
 				cliente.setCorreo(resultado.getString(5));
 				cliente.setTelefono(resultado.getString(6));
 				
-				clientes.add(cliente);
-				
-				System.out.println(resultado.getInt(1));
-				System.out.println(resultado.getString(2));
-				System.out.println(resultado.getString(3));
-				System.out.println(resultado.getString(4));
-				System.out.println(resultado.getString(5));
-				
+				clientes.add(cliente);				
 			}
 			
 			stmt.close();
             			
 		} catch (SQLException e) {
-			System.out.println("Error: " + e.toString());
+			System.out.println("Error: " + e.getMessage());
 		}
 		
 		return clientes;

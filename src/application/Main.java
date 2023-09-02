@@ -35,6 +35,8 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			seconStage.setTitle(tittle);
 			seconStage.setScene(scene);
+			seconStage.centerOnScreen();
+			seconStage.setResizable(false);
 			seconStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

@@ -39,7 +39,6 @@ public class L_usuario {
 			stmt.setString(2, user.getContraseña());
 			ResultSet resultado = stmt.executeQuery();			
 			if (resultado.next()) {
-				System.out.println("Resultado: " + resultado.getString("contraseña"));				
 				autenticacion = true;
 			}else {				
 				autenticacion = false;

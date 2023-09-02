@@ -5,7 +5,10 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
+import javafx.util.converter.IntegerStringConverter;
 import Logica.L_clientes;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,8 +20,8 @@ import javafx.scene.control.ComboBox;
 
 public class I_registroClientesController {
 	
-	ObservableList<String> tipoDoc = FXCollections.observableArrayList("Documento Nacional de Identidad", "Carnet de Extrangería", "Pasaporte", "Documento de Identidad Extrangero", "Registro Unico de Contribuyente");
-		
+	ObservableList<String> tipoDoc = FXCollections.observableArrayList("DNI", "Carnet Extrangería", "Pasaporte", "DIE", "RUC");
+	
 	@FXML
 	private Label lblNombreCliente;
 	@FXML
@@ -50,6 +53,20 @@ public class I_registroClientesController {
 	private void initialize() {
 		cmbxTipoDoc.setValue(tipoDoc.get(0));
 		cmbxTipoDoc.setItems(tipoDoc);
+		
+		StringConverter<Integer> converter = new IntegerStringConverter();
+
+        // filtro para permitir solo dígitos
+        TextFormatter<Integer> textFormatter = new TextFormatter<>(converter, null, change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d*")) {
+                return change;
+            } else {
+                return null;
+            }
+        });
+
+        txtTelefono.setTextFormatter(textFormatter);
 	}
 	// Event Listener on Button[#btnRegistrarCliente].onAction
 	@FXML
@@ -71,7 +88,6 @@ public class I_registroClientesController {
 	public void btnSalir(ActionEvent event) {
 		salir(event);
 	}
-	
 
     public void salir(ActionEvent e) {
 		Node source = (Node) e.getSource();
@@ -79,6 +95,8 @@ public class I_registroClientesController {
 		stage.close();
 	}
 	
+    
+    
 	
 	
 	

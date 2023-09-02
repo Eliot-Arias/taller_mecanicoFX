@@ -17,38 +17,19 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="1124.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.I_inicioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="915.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interfaz.I_inicioController">
    <children>
-      <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="651.0" prefWidth="1124.0">
+      <Pane maxHeight="842.0" maxWidth="1300.0" minHeight="842.0" minWidth="1300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <MenuBar layoutY="1.0" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="1124.0">
-               <menus>
-                  <Menu mnemonicParsing="false" text="Registrar">
-                     <items>
-                        <MenuItem fx:id="registroCliente" mnemonicParsing="false" onAction="#btnAbrirRegistroClientes" text="Clientes" />
-                        <MenuItem fx:id="registroAuto" mnemonicParsing="false" onAction="#btnAbrirRegistroClientes" text="Automoviles" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Edit">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Help">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                     </items>
-                  </Menu>
-               </menus>
-            </MenuBar>
-            <TabPane layoutY="78.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="573.0" prefWidth="1124.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutX="7.0" layoutY="92.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" tabClosingPolicy="UNAVAILABLE">
                <tabs>
                   <Tab text="Clientes">
                      <content>
                         <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <TableView fx:id="tableClientes" layoutX="308.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="516.0" prefWidth="815.0">
+                              <TableView fx:id="tableClientes" layoutX="401.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="677.0" prefWidth="900.0">
                                  <columns>
                                     <TableColumn fx:id="colIdCliente" maxWidth="150.0" minWidth="44.0" prefWidth="50.0" text="ID" />
                                     <TableColumn fx:id="colNombreCliente" maxWidth="216.0" minWidth="98.0" prefWidth="209.0" text="Nombre" />
@@ -58,8 +39,26 @@
                                     <TableColumn fx:id="colTelefono" maxWidth="352.0" minWidth="0.0" prefWidth="123.0" text="Telefono" />
                                  </columns>
                               </TableView>
-                              <Separator layoutX="295.0" orientation="VERTICAL" prefHeight="517.0" prefWidth="0.0" />
-                              <GridPane layoutX="23.0" layoutY="14.0" prefHeight="316.0" prefWidth="261.0">
+                              <Separator layoutX="387.0" layoutY="5.0" orientation="VERTICAL" prefHeight="737.0" prefWidth="22.0" />
+                              <GridPane hgap="15.0" layoutX="67.0" layoutY="363.0" prefHeight="173.0" prefWidth="274.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Button fx:id="btnRegistrarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnRegistrarCliente" prefHeight="35.0" prefWidth="209.0" text="Agregar" />
+                                    <Button fx:id="btnActualizarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnActualizarCliente" prefWidth="181.0" text="Editar" GridPane.columnIndex="1" />
+                                    <Button fx:id="btnEliminarCLiente" maxHeight="30.0" maxWidth="1.7976931348623157E308" minHeight="17.0" mnemonicParsing="false" prefWidth="148.0" text="Eliminar" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnLimpiarFormulario" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLimpiarFormulario" prefHeight="30.0" prefWidth="156.0" text="Limpiar Formulario" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                    <Button fx:id="btnSeleccionarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSeleccionarCliente" text="Seleccionar Cliente" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <GridPane layoutX="67.0" layoutY="27.0" prefHeight="316.0" prefWidth="261.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
@@ -80,24 +79,6 @@
                                     <TextField fx:id="txtIdCliente" editable="false" maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="ID cliente" />
                                  </children>
                               </GridPane>
-                              <GridPane hgap="15.0" layoutX="15.0" layoutY="331.0" prefHeight="173.0" prefWidth="274.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <Button fx:id="btnRegistrarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnRegistrarCliente" prefHeight="35.0" prefWidth="209.0" text="Agregar" />
-                                    <Button fx:id="btnActualizarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnActualizarCliente" prefWidth="181.0" text="Editar" GridPane.columnIndex="1" />
-                                    <Button fx:id="btnEliminarCLiente" maxHeight="30.0" maxWidth="1.7976931348623157E308" minHeight="17.0" mnemonicParsing="false" prefWidth="148.0" text="Eliminar" GridPane.rowIndex="1" />
-                                    <Button fx:id="btnLimpiarFormulario" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLimpiarFormulario" prefHeight="30.0" prefWidth="156.0" text="Limpiar Formulario" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                                    <Button fx:id="btnSeleccionarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSeleccionarCliente" text="Seleccionar Cliente" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                 </children>
-                              </GridPane>
                            </children>
                         </AnchorPane>
                      </content>
@@ -106,7 +87,7 @@
                      <content>
                         <AnchorPane prefHeight="538.0" prefWidth="1120.0">
                            <children>
-                              <TableView fx:id="tableAutos" layoutX="434.0" layoutY="10.0" prefHeight="499.0" prefWidth="676.0">
+                              <TableView fx:id="tableAutos" layoutX="570.0" layoutY="10.0" prefHeight="734.0" prefWidth="723.0">
                                 <columns>
                                   <TableColumn fx:id="colIdAuto" prefWidth="75.0" text="ID" />
                                   <TableColumn fx:id="colMarcaAuto" prefWidth="112.0" text="Marca" />
@@ -117,7 +98,7 @@
                                     <TableColumn fx:id="colCLiente" prefWidth="118.0" text="Cliente" />
                                 </columns>
                               </TableView>
-                              <GridPane hgap="10.0" layoutX="180.0" layoutY="14.0" prefHeight="280.0" prefWidth="238.0">
+                              <GridPane hgap="10.0" layoutX="285.0" layoutY="14.0" prefHeight="331.0" prefWidth="270.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -129,18 +110,18 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <TextField maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="Nro de Placa" />
-                                    <TextField maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="Año" GridPane.columnIndex="1" />
-                                    <TextField maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="Marca" GridPane.rowIndex="1" />
-                                    <TextField maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="Color" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <TextField maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="Modelo" GridPane.rowIndex="2" />
-                                    <TextField maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="Garantia" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <TextField maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="Historial" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <TextField editable="false" maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="ID" GridPane.rowIndex="3" />
+                                    <TextField fx:id="txtNroPlaca" maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="Nro de Placa" />
+                                    <TextField fx:id="txtAño" maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="Año" GridPane.columnIndex="1" />
+                                    <TextField fx:id="txtMarca" maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="Marca" GridPane.rowIndex="1" />
+                                    <TextField fx:id="txtColor" maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="Color" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="txtModelo" maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="Modelo" GridPane.rowIndex="2" />
+                                    <TextField fx:id="txtGarantia" maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="Garantia" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="txtHistorial" maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="Historial" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField fx:id="txtIdAuto" editable="false" maxHeight="30.0" maxWidth="1.7976931348623157E308" promptText="ID" GridPane.rowIndex="3" />
                                  </children>
                               </GridPane>
-                              <Separator layoutX="428.0" layoutY="10.0" orientation="VERTICAL" prefHeight="494.0" prefWidth="0.0" />
-                              <GridPane layoutX="14.0" layoutY="14.0" prefHeight="217.0" prefWidth="153.0">
+                              <Separator layoutX="564.0" layoutY="10.0" orientation="VERTICAL" prefHeight="743.0" prefWidth="3.0" />
+                              <GridPane layoutX="14.0" layoutY="14.0" prefHeight="294.0" prefWidth="252.0">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
@@ -153,14 +134,14 @@
                                 </rowConstraints>
                                  <children>
                                     <Label alignment="TOP_CENTER" text="Buscar Cliente Registrado" />
-                                    <TextField maxHeight="30.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="103.0" promptText="Nro Documento" GridPane.rowIndex="1" />
-                                    <TextField editable="false" maxHeight="30.0" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
-                                    <TextField editable="false" maxHeight="30.0" maxWidth="1.7976931348623157E308" GridPane.rowIndex="4" />
-                                    <Button fx:id="btnBuscarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Buscar Cliente" GridPane.rowIndex="2" />
+                                    <TextField fx:id="txtBuscarNumero" maxHeight="30.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="103.0" promptText="Nro Documento" GridPane.rowIndex="1" />
+                                    <TextField fx:id="txtNombreClienteEncontrado" editable="false" maxHeight="30.0" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
+                                    <TextField fx:id="txtTelefonoClienteEncontrado" editable="false" maxHeight="30.0" maxWidth="1.7976931348623157E308" GridPane.rowIndex="4" />
+                                    <Button fx:id="btnBuscarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnBuscarCliente" text="Buscar Cliente" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
-                              <Separator layoutX="173.0" layoutY="8.0" orientation="VERTICAL" prefHeight="302.0" prefWidth="0.0" />
-                              <GridPane hgap="15.0" layoutX="43.0" layoutY="321.0" prefHeight="173.0" prefWidth="274.0">
+                              <Separator layoutX="272.0" layoutY="14.0" orientation="VERTICAL" prefHeight="527.0" prefWidth="2.0" />
+                              <GridPane hgap="15.0" layoutX="138.0" layoutY="570.0" prefHeight="173.0" prefWidth="274.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -181,8 +162,47 @@
                            </children>
                         </AnchorPane>
                      </content></Tab>
+                  <Tab text="Servicios">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </Tab>
+                  <Tab text="Untitled Tab">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </Tab>
+                  <Tab text="Empleados">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </Tab>
                </tabs>
             </TabPane>
+            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="30.0" prefWidth="1315.0">
+               <children>
+                  <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="1300.0" prefHeight="30.0" prefWidth="1300.0">
+                     <menus>
+                        <Menu mnemonicParsing="false" text="Registrar">
+                           <items>
+                              <MenuItem fx:id="registroCliente" mnemonicParsing="false" onAction="#btnAbrirRegistroClientes" text="Clientes" />
+                              <MenuItem fx:id="registroAuto" mnemonicParsing="false" onAction="#btnAbrirRegistroAuto" text="Automoviles" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Delete" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="About" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+               </children>
+            </VBox>
          </children>
       </Pane>
    </children>
