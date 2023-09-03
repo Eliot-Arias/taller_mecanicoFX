@@ -33,8 +33,6 @@ public class I_loginController {
 	}
 	
 	
-	
-	
 	// Event Listener on Button.onAction
 	@FXML
 	public void btnSalir(ActionEvent event) {

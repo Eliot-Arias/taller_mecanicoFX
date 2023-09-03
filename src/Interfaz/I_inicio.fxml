@@ -53,8 +53,8 @@
                                  <children>
                                     <Button fx:id="btnRegistrarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnRegistrarCliente" prefHeight="35.0" prefWidth="209.0" text="Agregar" />
                                     <Button fx:id="btnActualizarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnActualizarCliente" prefWidth="181.0" text="Editar" GridPane.columnIndex="1" />
-                                    <Button fx:id="btnEliminarCLiente" maxHeight="30.0" maxWidth="1.7976931348623157E308" minHeight="17.0" mnemonicParsing="false" prefWidth="148.0" text="Eliminar" GridPane.rowIndex="1" />
-                                    <Button fx:id="btnLimpiarFormulario" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLimpiarFormulario" prefHeight="30.0" prefWidth="156.0" text="Limpiar Formulario" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                    <Button fx:id="btnEliminarCLiente" maxHeight="30.0" maxWidth="1.7976931348623157E308" minHeight="17.0" mnemonicParsing="false" onAction="#btnEliminarCLiente" prefWidth="148.0" text="Eliminar" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnLimpiarFormularioCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLimpiarFormularioCliente" prefHeight="30.0" prefWidth="156.0" text="Limpiar Formulario" GridPane.columnSpan="2" GridPane.rowIndex="2" />
                                     <Button fx:id="btnSeleccionarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSeleccionarCliente" text="Seleccionar Cliente" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                  </children>
                               </GridPane>
@@ -155,7 +155,7 @@
                                     <Button maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0" prefWidth="209.0" text="Agregar" />
                                     <Button maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="181.0" text="Editar" GridPane.columnIndex="1" />
                                     <Button maxHeight="30.0" maxWidth="1.7976931348623157E308" minHeight="17.0" mnemonicParsing="false" prefWidth="148.0" text="Eliminar" GridPane.rowIndex="1" />
-                                    <Button fx:id="btnLimpiarFormulario" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLimpiarFormulario" prefHeight="30.0" prefWidth="156.0" text="Limpiar Formulario" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                    <Button maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" prefWidth="156.0" text="Limpiar Formulario" GridPane.columnSpan="2" GridPane.rowIndex="2" />
                                     <Button maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Seleccionar Auto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                  </children>
                               </GridPane>
