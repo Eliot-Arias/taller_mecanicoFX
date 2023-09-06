@@ -136,7 +136,7 @@
                                     <Label alignment="TOP_CENTER" text="Buscar Cliente Registrado" />
                                     <TextField fx:id="txtBuscarNumero" maxHeight="30.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="103.0" promptText="Nro Documento" GridPane.rowIndex="1" />
                                     <TextField fx:id="txtNombreClienteEncontrado" editable="false" maxHeight="30.0" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3" />
-                                    <TextField fx:id="txtTelefonoClienteEncontrado" editable="false" maxHeight="30.0" maxWidth="1.7976931348623157E308" GridPane.rowIndex="4" />
+                                    <TextField fx:id="txtIdClienteEncontrado" editable="false" maxHeight="30.0" maxWidth="1.7976931348623157E308" GridPane.rowIndex="4" />
                                     <Button fx:id="btnBuscarCliente" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnBuscarCliente" text="Buscar Cliente" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
@@ -152,11 +152,11 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Button maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="35.0" prefWidth="209.0" text="Agregar" />
-                                    <Button maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="181.0" text="Editar" GridPane.columnIndex="1" />
-                                    <Button maxHeight="30.0" maxWidth="1.7976931348623157E308" minHeight="17.0" mnemonicParsing="false" prefWidth="148.0" text="Eliminar" GridPane.rowIndex="1" />
-                                    <Button maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="30.0" prefWidth="156.0" text="Limpiar Formulario" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                                    <Button maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Seleccionar Auto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnRegistrarAuto" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnRegistrarAuto" prefHeight="35.0" prefWidth="209.0" text="Agregar" />
+                                    <Button fx:id="btnActualizarAuto" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnActualizarAuto" prefWidth="181.0" text="Editar" GridPane.columnIndex="1" />
+                                    <Button fx:id="btnEliminarAuto" maxHeight="30.0" maxWidth="1.7976931348623157E308" minHeight="17.0" mnemonicParsing="false" onAction="#btnEliminarAuto" prefWidth="148.0" text="Eliminar" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnLimpiarFormularioAuto" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnlimpiarFormularioAuto" prefHeight="30.0" prefWidth="156.0" text="Limpiar Formulario" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                                    <Button fx:id="btnSeleccionarAuto" maxHeight="30.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSeleccionarAuto" text="Seleccionar Auto" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                  </children>
                               </GridPane>
                            </children>
