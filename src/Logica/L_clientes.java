@@ -36,21 +36,12 @@ public class L_clientes {
 	        alert.setContentText("Por favor, complete todos los campos antes de actualizar.");
 	        alert.showAndWait();
 	        return; 
-	    }	
-		
-	    
-	    
-		
+	    }		
 		cliente.setNombre(nombreText);
 		cliente.setTipo_documento((String) tipoDocumentoValue);
 		cliente.setNro_documento(nroDocumentoText);
 		cliente.setCorreo(correoText);
-		cliente.setTelefono(telefonoText);
-		
-		
-		
-		
-		
+		cliente.setTelefono(telefonoText);		
 		
 		D_conexion cn = new D_conexion();
 		
