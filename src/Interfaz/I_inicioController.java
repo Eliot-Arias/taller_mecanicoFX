@@ -232,17 +232,21 @@ public class I_inicioController {
 	@FXML
 	void btnActualizarAuto(ActionEvent event) {
 		L_auto.actualizarAuto(txtIdAuto, txtNroPlaca, txtMarca, txtModelo, txtAño, txtColor, txtGarantia, txtHistorial);
+		btnlimpiarFormularioAuto();
 		llenarTablaAutos();
 	}
 	
 	@FXML
 	void btnEliminarAuto() {
-		
+		L_auto.eliminarAuto(txtIdAuto);
+		btnlimpiarFormularioAuto();
+		llenarTablaAutos();		
 	}
 	
 	@FXML
 	void btnRegistrarAuto() {
     	L_auto.registrarAuto(clienteEncontrado, txtNroPlaca, txtMarca, txtModelo, txtAño, txtColor, txtGarantia, txtHistorial);
+    	btnlimpiarFormularioAuto();
     	llenarTablaAutos();
 	}
 	

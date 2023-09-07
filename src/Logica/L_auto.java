@@ -4,8 +4,7 @@ package Logica;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import com.mysql.cj.xdevapi.PreparableStatement;
+import java.util.Optional;
 
 import Datos.D_conexion;
 import Modelo.M_Clientes;
@@ -13,10 +12,12 @@ import Modelo.M_automovil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class L_auto {
@@ -126,7 +127,66 @@ public class L_auto {
 		
 	}
 	
-	public static void eliminarAuto(TextField idAutomovil) {
+	public static void eliminarAuto(TextField idAutomovil) {		
+		
+		String id = idAutomovil.getText();
+		
+		if (id.isEmpty()) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("No se envio el ID de Auto");
+			alert.showAndWait();
+		}else {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Eliminando Clientes");
+			alert.setHeaderText("¿Esta seguro que desea eliminar el registro?");
+			alert.setContentText("Elija una opcion: ");
+
+			ButtonType buttonTypeOne = new ButtonType("Eliminar");
+			ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonData.CANCEL_CLOSE);
+
+			alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeCancel);
+			Optional<ButtonType> result = alert.showAndWait();
+			System.out.println("Anny con id del Auto: " + id);
+			
+			if (result.get() == buttonTypeOne){
+			    System.out.println("Aparecera Anny si acepta");
+			    
+				String consulta = "CALL eliminar_auto(?)";
+			    auto.setId_automovil(Integer.parseInt(id));
+				System.out.println(auto.getId_automovil());
+				try {
+					CallableStatement stmt = cn.conectar().prepareCall(consulta);
+					stmt.setInt(1, auto.getId_automovil());
+					
+					stmt.execute();
+					
+					stmt.close();
+		            			
+				} catch (SQLException e) {
+					if (e.getSQLState().equals("45000")) {
+						
+						Alert alert1 = new Alert(AlertType.INFORMATION);
+						alert1.setTitle("AVISO");
+						alert1.setContentText(e.getMessage());
+						alert1.showAndWait();
+						
+					}else {
+						Alert alert2 = new Alert(AlertType.ERROR);
+						alert2.setTitle("Error");
+						alert2.setHeaderText(e.getMessage());
+						alert2.showAndWait();
+					}
+				}
+				
+				
+			} else {
+			    System.out.println("Anny cancelando la accion");
+			}
+			
+		}
+		
+		
 		
 	}
 	
