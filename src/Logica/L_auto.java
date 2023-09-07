@@ -22,7 +22,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class L_auto {
 	private static M_automovil auto = new M_automovil();
-	static D_conexion cn = new D_conexion();
 	
 	public static void registrarAuto(M_Clientes cliente ,TextField txtNroPlaca, TextField txtMarca, TextField txtModelo, TextField txtAño, TextField txtColor, TextField txtGarantia,TextField txtHistorial){
 		if (cliente == null) {
@@ -42,7 +41,7 @@ public class L_auto {
 			
 			String consulta = "CALL guardarAuto(?, ?, ?, ?, ?, ?, NULL, NULL);";
 			try {
-				CallableStatement stmt = cn.conectar().prepareCall(consulta);
+				CallableStatement stmt = D_conexion.conectar().prepareCall(consulta);
 				stmt.setInt(1, auto.getId_cliente());
 				stmt.setString(2, auto.getNro_placa());
 				stmt.setString(3, auto.getMarca());
@@ -99,7 +98,7 @@ public class L_auto {
 			
 			String consulta = "CALL actualiza_auto(?, ?, ?, ?, ?, ?, null, null)";
 			try {
-				CallableStatement stmt = cn.conectar().prepareCall(consulta);
+				CallableStatement stmt = D_conexion.conectar().prepareCall(consulta);
 				stmt.setInt(1, auto.getId_automovil());
 				stmt.setString(2, auto.getNro_placa());
 				stmt.setString(3, auto.getMarca());
@@ -156,7 +155,7 @@ public class L_auto {
 			    auto.setId_automovil(Integer.parseInt(id));
 				System.out.println(auto.getId_automovil());
 				try {
-					CallableStatement stmt = cn.conectar().prepareCall(consulta);
+					CallableStatement stmt = D_conexion.conectar().prepareCall(consulta);
 					stmt.setInt(1, auto.getId_automovil());
 					
 					stmt.execute();
@@ -198,12 +197,11 @@ public class L_auto {
 		
 		String consulta = "CALL mostrar_auto();";
 		try {
-			CallableStatement stmt = cn.conectar().prepareCall(consulta);
+			CallableStatement stmt = D_conexion.conectar().prepareCall(consulta);
 			ResultSet resultado = stmt.executeQuery();	
 			
 			while(resultado.next()) {
 				M_automovil auto = new M_automovil();
-				M_Clientes cliente = new M_Clientes();
 				auto.setId_automovil(resultado.getInt(1));
 				auto.setMarca(resultado.getString(2));
 				auto.setAño(resultado.getString(3));

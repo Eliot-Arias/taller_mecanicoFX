@@ -18,7 +18,6 @@ import javafx.scene.control.ComboBox;
 
 public class L_clientes {
 	private static M_Clientes cliente = new M_Clientes();
-	private static D_conexion cn = new D_conexion();
 	
 	public static void registrarCliente(TextField nombre, ComboBox<String> tipo_documento, TextField nro_documento, TextField correo, TextField telefono) {
 		
@@ -47,7 +46,7 @@ public class L_clientes {
 		
 		String consulta = "CALL registrar_cliente(?, ?, ?, ?, ?);";
 		try {
-			CallableStatement stmt = cn.conectar().prepareCall(consulta);
+			CallableStatement stmt = D_conexion.conectar().prepareCall(consulta);
 			stmt.setString(1, cliente.getNombre());
 			stmt.setString(2, cliente.getTipo_documento());
 			stmt.setString(3, cliente.getNro_documento());
@@ -111,7 +110,7 @@ public class L_clientes {
 		String consulta = "CALL editar_cliente(?, ?, ?, ?, ?, ?);";
 		
 		try {
-			CallableStatement stmt = cn.conectar().prepareCall(consulta);
+			CallableStatement stmt = D_conexion.conectar().prepareCall(consulta);
 			stmt.setInt(1, cliente.getId_cliente());
 			stmt.setString(2, cliente.getNombre());
 			stmt.setString(3, cliente.getTipo_documento());
@@ -148,7 +147,7 @@ public class L_clientes {
 		//String consulta = "SELECT * FROM clientes WHERE nro_documento = ?";
 		
 		try {
-			CallableStatement stmt = cn.conectar().prepareCall(consulta);
+			CallableStatement stmt = D_conexion.conectar().prepareCall(consulta);
 			stmt.setString(1, nroDocumento);
 			ResultSet resultado = stmt.executeQuery();
 			if (resultado.next()) {
@@ -179,7 +178,7 @@ public class L_clientes {
 		
 		String consulta = "SELECT * FROM clientes";
 		try {
-			CallableStatement stmt = cn.conectar().prepareCall(consulta);
+			CallableStatement stmt = D_conexion.conectar().prepareCall(consulta);
 			ResultSet resultado = stmt.executeQuery();	
 			
 			while(resultado.next()) {
@@ -233,7 +232,7 @@ public class L_clientes {
 			    cliente.setId_cliente(Integer.parseInt(idCliente));
 				System.out.println(cliente.getId_cliente());
 				try {
-					CallableStatement stmt = cn.conectar().prepareCall(consulta);
+					CallableStatement stmt = D_conexion.conectar().prepareCall(consulta);
 					stmt.setInt(1, cliente.getId_cliente());
 					
 					stmt.execute();
