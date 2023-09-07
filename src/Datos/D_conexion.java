@@ -27,6 +27,7 @@ Connection conectar = null;
 			JOptionPane.showMessageDialog(null, "Error en la conexion" + e.getMessage());
 			System.out.println(e.toString());
 		}
+		
 		return conectar;
 		
 	}

@@ -17,7 +17,7 @@ public class Main extends Application {
 		try {
 			Parent loginRoot = FXMLLoader.load(getClass().getResource("../Interfaz/I_login.fxml"));
 			Scene loginScene = new Scene(loginRoot);
-			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());			
+			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Inicio Sesion");
 			primaryStage.setScene(loginScene);
 			primaryStage.show();			

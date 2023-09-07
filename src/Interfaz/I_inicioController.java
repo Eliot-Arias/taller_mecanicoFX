@@ -23,6 +23,8 @@ import javafx.stage.Stage;
 public class I_inicioController {
 	private Stage stage = new Stage();
 	private Main mn = new Main();
+	private M_Clientes cliente;
+	private M_automovil auto;
 
 	// Tabla Clientes
 	@FXML
@@ -95,7 +97,7 @@ public class I_inicioController {
 	private TextField txtNombreClienteEncontrado;
 
 	@FXML
-	private TextField txtTelefonoClienteEncontrado;
+	private TextField txtIdClienteEncontrado;
 
 	// Campos de Cliente
 
@@ -150,10 +152,13 @@ public class I_inicioController {
 	private Button btnActualizarAuto;
 	@FXML
 	private Button btnEliminarAuto;
+	
 	@FXML
 	private Button btnSeleccionarAuto;
+	
 	@FXML
 	private Button btnBuscarCliente;
+
 
 	// Lista de clientes
 	private ObservableList<M_Clientes> clientesList = FXCollections.observableArrayList();
@@ -190,8 +195,7 @@ public class I_inicioController {
 	}
 
 	@FXML
-	void btnSeleccionarCliente(ActionEvent event) {
-		M_Clientes cliente = new M_Clientes();
+	void btnSeleccionarCliente(ActionEvent event) {		
 		cliente = tableClientes.getSelectionModel().getSelectedItem();
 		if (cliente != null) {
 			txtIdCliente.setText(String.valueOf(cliente.getId_cliente()));
@@ -214,32 +218,51 @@ public class I_inicioController {
 
 	@FXML
 	void btnSeleccionarAuto(ActionEvent event) {
-		M_automovil auto = new M_automovil();
 		auto = tableAutos.getSelectionModel().getSelectedItem();
-		if (auto != null) {
-			txtIdAuto.setText(String.valueOf(auto.getId_automovil()));
-			txtIdCliente.setText(String.valueOf(auto.getId_cliente()));
-		}
+		txtNroPlaca.setText(auto.getNro_placa());
+		txtAño.setText(auto.getAño());		
+		txtMarca.setText(auto.getMarca());
+		txtColor.setText(auto.getColor());
+		txtModelo.setText(auto.getModelo());
+		txtIdAuto.setText(String.valueOf(auto.getId_automovil()));
+		
 	}
+	
 
 	@FXML
 	void btnActualizarAuto(ActionEvent event) {
-		L_clientes.actualizarCliente(txtIdCliente, txtNombreCliente, cmbxTipoDoc, txtNroDoc, txtCorreo, txtTelefono);
-		llenarTablaClientes();
+		L_auto.actualizarAuto(txtIdAuto, txtNroPlaca, txtMarca, txtModelo, txtAño, txtColor, txtGarantia, txtHistorial);
+		btnlimpiarFormularioAuto();
+		llenarTablaAutos();
 	}
-
-	// Botones del menu
-
+	
 	@FXML
-	void btnAbrirRegistroAuto(ActionEvent event) throws Exception {
-		System.out.println("Auto");
-		mn.load(stage, "registroAuto", "Registro de Auto");
+	void btnEliminarAuto() {
+		L_auto.eliminarAuto(txtIdAuto);
+		btnlimpiarFormularioAuto();
+		llenarTablaAutos();		
 	}
-
+	
 	@FXML
-	void btnAbrirRegistroClientes(ActionEvent event) throws Exception {
-		System.out.println("Clientes");
-		mn.load(stage, "registroClientes", "Registro de Clientes");
+	void btnRegistrarAuto() {
+    	L_auto.registrarAuto(clienteEncontrado, txtNroPlaca, txtMarca, txtModelo, txtAño, txtColor, txtGarantia, txtHistorial);
+    	btnlimpiarFormularioAuto();
+    	llenarTablaAutos();
+	}
+	
+	@FXML
+	void btnlimpiarFormularioAuto() {
+		txtBuscarNumero.setText("");
+		txtNombreClienteEncontrado.setText("");
+		txtIdClienteEncontrado.setText("");
+		txtNroPlaca.setText("");
+		txtAño.setText("");
+		txtMarca.setText("");
+		txtColor.setText("");
+		txtModelo.setText("");
+		txtGarantia.setText("");
+		txtIdAuto.setText("");
+		txtHistorial.setText("");
 	}
 	
 	
@@ -248,13 +271,11 @@ public class I_inicioController {
 	@FXML
     void btnBuscarCliente(ActionEvent event){
     	String nroDocumento = txtBuscarNumero.getText();
-    	clienteEncontrado = L_clientes.buscarCliente(nroDocumento);
-    	
-    	System.out.println("Anny Buscando Clientes");
+    	clienteEncontrado = L_clientes.buscarCliente(nroDocumento);    	
     	
     	if (clienteEncontrado != null) {
     		txtNombreClienteEncontrado.setText(clienteEncontrado.getNombre());
-    		txtTelefonoClienteEncontrado.setText(clienteEncontrado.getTelefono());
+    		txtIdClienteEncontrado.setText(String.valueOf(clienteEncontrado.getId_cliente()));
     		Alert alert = new Alert(AlertType.INFORMATION);
     		alert.setTitle("Respuesta");
     		alert.setHeaderText(null);
@@ -272,6 +293,21 @@ public class I_inicioController {
     }
 	
 	
+	
+
+	// Botones del menu
+
+	@FXML
+	void btnAbrirRegistroAuto(ActionEvent event) throws Exception {
+		System.out.println("Auto");
+		mn.load(stage, "registroAuto", "Registro de Auto");
+	}
+
+	@FXML
+	void btnAbrirRegistroClientes(ActionEvent event) throws Exception {
+		System.out.println("Clientes");
+		mn.load(stage, "registroClientes", "Registro de Clientes");
+	}	
 
 	@FXML
 	public void initialize() {

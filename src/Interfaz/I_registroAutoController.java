@@ -111,7 +111,7 @@ public class I_registroAutoController {
 
     @FXML
     void btnGuardar(ActionEvent event) {
-    	L_auto.registrarAuto(clienteEncontrado, txtNroPlaca, txtMarca, txtModelo, txtAño, txtColor, txtGarantia, txtHistorial, txtNroDocCliente);
+    	L_auto.registrarAuto(clienteEncontrado, txtNroPlaca, txtMarca, txtModelo, txtAño, txtColor, txtGarantia, txtHistorial);
     	
     }
 
@@ -134,7 +134,7 @@ public class I_registroAutoController {
     	if (clienteEncontrado != null) {
     		lblNombreCliente.setText(clienteEncontrado.getNombre());
     		lblCorreoCliente.setText(clienteEncontrado.getCorreo());
-    		lblTelefonoCliente.setText(clienteEncontrado.getTelefono());
+    		lblTelefonoCliente.setText(String.valueOf(clienteEncontrado.getId_cliente()));
     		Alert alert = new Alert(AlertType.INFORMATION);
     		alert.setTitle("Respuesta");
     		alert.setHeaderText(null);

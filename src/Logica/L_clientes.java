@@ -18,7 +18,7 @@ import javafx.scene.control.ComboBox;
 
 public class L_clientes {
 	private static M_Clientes cliente = new M_Clientes();
-	
+	private static D_conexion cn = new D_conexion();
 	
 	public static void registrarCliente(TextField nombre, ComboBox<String> tipo_documento, TextField nro_documento, TextField correo, TextField telefono) {
 		
@@ -36,23 +36,14 @@ public class L_clientes {
 	        alert.setContentText("Por favor, complete todos los campos antes de actualizar.");
 	        alert.showAndWait();
 	        return; 
-	    }	
-		
-	    
-	    
-		
+	    }		
 		cliente.setNombre(nombreText);
 		cliente.setTipo_documento((String) tipoDocumentoValue);
 		cliente.setNro_documento(nroDocumentoText);
 		cliente.setCorreo(correoText);
-		cliente.setTelefono(telefonoText);
+		cliente.setTelefono(telefonoText);		
 		
 		
-		
-		
-		
-		
-		D_conexion cn = new D_conexion();
 		
 		String consulta = "CALL registrar_cliente(?, ?, ?, ?, ?);";
 		try {
@@ -213,7 +204,6 @@ public class L_clientes {
 	}
 	
 	public static void eliminarCliente(TextField id_cliente) {
-		D_conexion cn = new D_conexion();
 		
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Eliminando Clientes");
